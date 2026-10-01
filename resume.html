@@ -1,0 +1,132 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ data.name }} - Resume</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="resume-page">
+
+    <div class="resume-container">
+
+        <!-- Header -->
+        <div class="resume-header">
+
+            <div>
+                <h1>{{ data.name }}</h1>
+
+                <p class="contact">
+                    {{ data.email }} &nbsp; | &nbsp;
+                    {{ data.phone }} &nbsp; | &nbsp;
+                    {{ data.address }}
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Career Objective -->
+        <section class="resume-section">
+
+            <h2>Career Objective</h2>
+
+            <p>
+                {{ data.career }}
+            </p>
+
+        </section>
+
+
+        <!-- Education -->
+        <section class="resume-section">
+
+            <h2>Education</h2>
+
+            <p class="multiline">
+                {{ data.education }}
+            </p>
+
+        </section>
+
+
+        <!-- Skills -->
+        <section class="resume-section">
+
+            <h2>Skills</h2>
+
+            <div class="skills-list">
+
+                {% for skill in data.skills.split(',') %}
+
+                <span class="skill">
+                    {{ skill.strip() }}
+                </span>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- Projects -->
+        <section class="resume-section">
+
+            <h2>Projects</h2>
+
+            <p class="multiline">
+                {{ data.projects }}
+            </p>
+
+        </section>
+
+
+        <!-- Experience -->
+        <section class="resume-section">
+
+            <h2>Experience</h2>
+
+            <p class="multiline">
+                {{ data.experience }}
+            </p>
+
+        </section>
+
+
+        <!-- Certificates -->
+        <section class="resume-section">
+
+            <h2>Certificates</h2>
+
+            <p class="multiline">
+                {{ data.certificates }}
+            </p>
+
+        </section>
+
+
+        <!-- Buttons -->
+
+        <div class="resume-actions">
+
+            <button onclick="window.print()" class="print-btn">
+                🖨️ Print / Save PDF
+            </button>
+
+            <a href="/create" class="back-btn">
+                ← Edit Resume
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
